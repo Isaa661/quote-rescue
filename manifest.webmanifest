@@ -1,0 +1,18 @@
+{
+  "name": "Quote Rescue",
+  "short_name": "Quote Rescue",
+  "description": "Quote follow-up workspace",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f7f9fd",
+  "theme_color": "#ffffff",
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
