@@ -34,6 +34,9 @@ create table if not exists public.quotes (
     references public.businesses(id,owner_id) on delete cascade
 );
 
+-- Composite foreign keys require a unique key before the referencing table is created.
+create unique index if not exists quotes_id_owner_unique on public.quotes(id,owner_id);
+
 create table if not exists public.quote_events (
   id uuid primary key default gen_random_uuid(),
   owner_id uuid not null references auth.users(id) on delete cascade,
@@ -46,7 +49,6 @@ create table if not exists public.quote_events (
 );
 
 -- Needed for composite ownership FK.
-create unique index if not exists quotes_id_owner_unique on public.quotes(id,owner_id);
 create index if not exists quotes_owner_due_idx on public.quotes(owner_id,next_followup_at);
 create index if not exists quote_events_owner_quote_idx on public.quote_events(owner_id,quote_id,created_at);
 
